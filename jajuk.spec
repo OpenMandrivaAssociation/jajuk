@@ -10,7 +10,8 @@ URL: 	       http://jajuk.info/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires: ant
-
+BuildRequires: jfreechart
+BuildRequires: jakarta-commons-codec
 
 %description
 Jajuk is software that organizes and plays music. 
@@ -45,6 +46,11 @@ perform the same task.
 rm -fr %buildroot
 %setup -q -n %name-src-%version
 %patch0 -p0
+%__rm -fr lib/jfreechart-1.0.1.jar
+ln -s /usr/share/java/jfreechart-1.0.5.jar lib/jfreechart-1.0.5.jar
+%__rm -fr lib/commons-codec-1.3.jar
+ln -s /usr/share/java/commons-codec-1.3.jar lib/commons-codec-1.3.jar
+
 %build
 cd src/scripts
 #%{ant}
