@@ -12,6 +12,8 @@ BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: ant
 BuildRequires: jfreechart
 BuildRequires: jakarta-commons-codec
+BuildRequires: vorbisspi
+BuildRequires: qdwizard
 
 %description
 Jajuk is software that organizes and plays music. 
@@ -47,9 +49,16 @@ rm -fr %buildroot
 %setup -q -n %name-src-%version
 %patch0 -p0
 %__rm -fr lib/jfreechart-1.0.1.jar
-ln -s /usr/share/java/jfreechart-1.0.5.jar lib/jfreechart-1.0.5.jar
+ln -s %{_javadir}/jfreechart-1.0.5.jar lib/jfreechart-1.0.5.jar
+
 %__rm -fr lib/commons-codec-1.3.jar
-ln -s /usr/share/java/commons-codec-1.3.jar lib/commons-codec-1.3.jar
+ln -s %{_javadir}/commons-codec-1.3.jar lib/commons-codec-1.3.jar
+
+%__rm -fr lib/vorbisspi-1.0.1.jar
+ln -s %{_javadir}/vorbisspi1.0.2.jar lib/vorbisspi1.0.2.jar
+
+%__rm -fr lib/qdwizard-1.9.jar
+ln -s %{_javadir}/qdwizard-1.9.jar lib/qdwizard-1.9.jar
 
 %build
 cd src/scripts
