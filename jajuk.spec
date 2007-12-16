@@ -14,6 +14,9 @@ BuildRequires: jfreechart
 BuildRequires: jakarta-commons-codec
 BuildRequires: vorbisspi
 BuildRequires: qdwizard
+BuildRequires: jakarta-commons-logging
+BuildRequires: jakarta-commons-collections
+BuildRequires: jlayer
 
 %description
 Jajuk is software that organizes and plays music. 
@@ -60,10 +63,19 @@ ln -s %{_javadir}/vorbisspi1.0.2.jar lib/vorbisspi1.0.2.jar
 %__rm -fr lib/qdwizard-1.9.jar
 ln -s %{_javadir}/qdwizard-1.9.jar lib/qdwizard-1.9.jar
 
+%__rm -fr lib/commons-logging-1.0.jar
+ln -s %{_javadir}/commons-logging-1.1.jar lib/commons-logging-1.1.jar
+
+%__rm -fr lib/commons-collections-3.2.jar
+ln -s %{_javadir}/commons-collections-3.2.jar lib/commons-collections-3.2.jar
+
+%__rm -fr lib/jlayer-1.0.jar
+ln -s %{_javadir}/jlayer-1.0.jar lib/jlayer-1.0.jar
+
 %build
 cd src/scripts
-#%{ant}
 ant
+
 %install
 install -dm 755 %buildroot%_prefix/lib/jajuk/bin
 install -pm 644 build/jajuk/bin/jajuk.jar $RPM_BUILD_ROOT%_prefix/lib/jajuk/bin/jajuk.jar
@@ -85,7 +97,7 @@ cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 Name=Jajuk
 Comment=Jajuk Advanced Jukebox
 Exec=jajuk
-Icon=jajuk-icon_64x64
+Icon=jajuk-icon-shortcut_64x64
 Terminal=false
 Type=Application
 Categories=AudioVideo;Audio;
