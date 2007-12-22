@@ -1,10 +1,10 @@
 Name:          jajuk
 Summary:       Jajuk Advanced Jukebox
-Version:       1.4.4
-Release:       %mkrel 1
+Version:       1.5.0
+Release:       %mkrel 0.try3.1
 License:       GPL
 Group:	       Sound
-Source0:       %name-sources-1.4.4.tar.bz2
+Source0:       %name-sources-1.5dev_try3.zip
 patch0:	       jajuk-1.4.4-fix-build.patch
 URL: 	       http://jajuk.info/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
