@@ -1,11 +1,11 @@
 Name:          jajuk
 Summary:       Jajuk Advanced Jukebox
-Version:       1.5.0
-Release:       %mkrel 0.try3.1
+Version:       1.7.3
+Release:       %mkrel 1
 License:       GPL
 Group:	       Sound
-Source0:       %name-sources-1.5dev_try3.zip
-patch0:	       jajuk-1.4.4-fix-build.patch
+Source0:       %name-sources-%version.zip
+patch0:	       jajuk-1.7.3-fix-build.patch
 URL: 	       http://jajuk.info/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -29,20 +29,16 @@ perform the same task.
 %defattr(-,root,root)
 %_bindir/jajuk
 %{_datadir}/applications/mandriva-%{name}.desktop
-%_prefix/lib/jajuk/bin/jajuk.jar
-%_prefix/lib/jajuk/lib/DEPENDENCIES.txt
-%_prefix/lib/jajuk/lib/DERIVATED.txt
-%_prefix/lib/jajuk/lib/LICENSE-Apache.txt
-%_prefix/lib/jajuk/lib/LICENSE-BSD.txt
-%_prefix/lib/jajuk/lib/LICENSE-CREATIVE-COMMONS.txt
-%_prefix/lib/jajuk/lib/LICENSE-GPL.txt
-%_prefix/lib/jajuk/lib/LICENSE-LGPL.txt
-%_prefix/lib/jajuk/lib/linux/*.jar
-%_prefix/lib/jajuk/lib/linux/*/*.so
-%_prefix/lib/jajuk/lib/linux/x86/libtray.so
-%_prefix/lib/jajuk/lib/*.jar
-%_prefix/lib/jajuk/bin/jajuk-help.jar
-%_prefix/lib/jajuk/bin/jajuk-help_fr.jar
+%_datadir/jajuk/bin/jajuk.jar
+%_datadir/jajuk/lib/DEPENDENCIES.txt
+%_datadir/jajuk/lib/DERIVATED.txt
+%_datadir/jajuk/lib/LICENSE-Apache.txt
+%_datadir/jajuk/lib/LICENSE-BSD.txt
+%_datadir/jajuk/lib/LICENSE-CREATIVE-COMMONS.txt
+%_datadir/jajuk/lib/LICENSE-GPL.txt
+%_datadir/jajuk/lib/LICENSE-LGPL.txt
+%_datadir/jajuk/lib/JIntellitype.dll
+%_datadir/jajuk/lib/*.jar
 %_iconsdir/jajuk-icon-shortcut_64x64.png
 
 #--------------------------------------------------------------------
@@ -50,43 +46,40 @@ perform the same task.
 %prep
 rm -fr %buildroot
 %setup -q -n %name-src-%version
-%patch0 -p0
-%__rm -fr lib/jfreechart-1.0.1.jar
-ln -s %{_javadir}/jfreechart-1.0.5.jar lib/jfreechart-1.0.5.jar
+%patch0 -p1
+#%__rm -fr lib/jfreechart-1.0.1.jar
+#ln -s %{_javadir}/jfreechart-1.0.5.jar lib/jfreechart-1.0.5.jar
 
-%__rm -fr lib/commons-codec-1.3.jar
-ln -s %{_javadir}/commons-codec-1.3.jar lib/commons-codec-1.3.jar
+#%__rm -fr lib/commons-codec-1.3.jar
+#ln -s %{_javadir}/commons-codec-1.3.jar lib/commons-codec-1.3.jar
 
-%__rm -fr lib/vorbisspi-1.0.1.jar
-ln -s %{_javadir}/vorbisspi1.0.2.jar lib/vorbisspi1.0.2.jar
+#%__rm -fr lib/vorbisspi-1.0.1.jar
+#ln -s %{_javadir}/vorbisspi1.0.2.jar lib/vorbisspi1.0.2.jar
 
-%__rm -fr lib/qdwizard-1.9.jar
-ln -s %{_javadir}/qdwizard-1.9.jar lib/qdwizard-1.9.jar
+#%__rm -fr lib/qdwizard-1.9.jar
+#ln -s %{_javadir}/qdwizard-1.9.jar lib/qdwizard-1.9.jar
 
-%__rm -fr lib/commons-logging-1.0.jar
-ln -s %{_javadir}/commons-logging-1.1.jar lib/commons-logging-1.1.jar
+#%__rm -fr lib/commons-logging-1.0.jar
+#ln -s %{_javadir}/commons-logging-1.1.jar lib/commons-logging-1.1.jar
 
-%__rm -fr lib/commons-collections-3.2.jar
-ln -s %{_javadir}/commons-collections-3.2.jar lib/commons-collections-3.2.jar
+#%__rm -fr lib/commons-collections-3.2.jar
+#ln -s %{_javadir}/commons-collections-3.2.jar lib/commons-collections-3.2.jar
 
-%__rm -fr lib/jlayer-1.0.jar
-ln -s %{_javadir}/jlayer-1.0.jar lib/jlayer-1.0.jar
+#%__rm -fr lib/jlayer-1.0.jar
+#ln -s %{_javadir}/jlayer-1.0.jar lib/jlayer-1.0.jar
 
 %build
 cd src/scripts
 ant
 
 %install
-install -dm 755 %buildroot%_prefix/lib/jajuk/bin
-install -pm 644 build/jajuk/bin/jajuk.jar $RPM_BUILD_ROOT%_prefix/lib/jajuk/bin/jajuk.jar
+install -dm 755 %buildroot%_datadir/jajuk/bin
+install -pm 644 build/jajuk/bin/jajuk.jar $RPM_BUILD_ROOT%_datadir/jajuk/bin/jajuk.jar
 %__rm -fr build/jajuk/lib/windows
-install -dm 755 %buildroot%_prefix/lib/jajuk/lib
-mv -f build/jajuk/lib/* $RPM_BUILD_ROOT%_prefix/lib/jajuk/lib/
+install -dm 755 %buildroot%_datadir/jajuk/lib
+mv -f build/jajuk/lib/* $RPM_BUILD_ROOT%_datadir/jajuk/lib/
 install -dm 755 %buildroot%_bindir
 install -pm 644 build/jajuk/jajuk $RPM_BUILD_ROOT%_bindir
-
-install -pm 644 jajuk-help.jar  $RPM_BUILD_ROOT%_prefix/lib/jajuk/bin/jajuk-help.jar
-install -pm 644 jajuk-help_fr.jar $RPM_BUILD_ROOT%_prefix/lib/jajuk/bin/jajuk-help_fr.jar
 
 install -dm 755 %buildroot%_iconsdir
 install -pm 644 build/jajuk/jajuk-icon-shortcut_64x64.png $RPM_BUILD_ROOT%_iconsdir
