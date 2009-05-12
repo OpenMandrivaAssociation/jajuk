@@ -10,13 +10,17 @@ URL: 	       http://jajuk.info/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires: ant
-BuildRequires: jfreechart
-BuildRequires: jakarta-commons-codec
-BuildRequires: vorbisspi
+BuildRequires: jfreechart = 1.0.11
+BuildRequires: jakarta-commons-codec = 1.3
+BuildRequires: vorbisspi = 1.0.2
 BuildRequires: qdwizard
 BuildRequires: jakarta-commons-logging
 BuildRequires: jakarta-commons-collections
 BuildRequires: jlayer
+
+Requires:      jfreechart = 1.0.11
+Requires:      jakarta-commons-codec = 1.3
+Requires: vorbisspi = 1.0.2
 
 %description
 Jajuk is software that organizes and plays music. 
@@ -47,14 +51,14 @@ perform the same task.
 rm -fr %buildroot
 %setup -q -n %name-src-%version
 %patch0 -p1
-#%__rm -fr lib/jfreechart-1.0.1.jar
-#ln -s %{_javadir}/jfreechart-1.0.5.jar lib/jfreechart-1.0.5.jar
+%__rm -fr lib/jfreechart-1.0.1.jar
+ln -s %{_javadir}/jfreechart-1.0.11.jar lib/jfreechart-1.0.11.jar
 
-#%__rm -fr lib/commons-codec-1.3.jar
-#ln -s %{_javadir}/commons-codec-1.3.jar lib/commons-codec-1.3.jar
+%__rm -fr lib/commons-codec-1.3.jar
+ln -s %{_javadir}/commons-codec-1.3.jar lib/commons-codec-1.3.jar
 
-#%__rm -fr lib/vorbisspi-1.0.1.jar
-#ln -s %{_javadir}/vorbisspi1.0.2.jar lib/vorbisspi1.0.2.jar
+%__rm -fr lib/vorbisspi-1.0.1.jar
+ln -s %{_javadir}/vorbisspi1.0.2.jar lib/vorbisspi1.0.2.jar
 
 #%__rm -fr lib/qdwizard-1.9.jar
 #ln -s %{_javadir}/qdwizard-1.9.jar lib/qdwizard-1.9.jar
