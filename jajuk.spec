@@ -21,10 +21,11 @@ BuildRequires: jlayer = 1.0
 Requires:      jfreechart = 1.0.11
 Requires:      jakarta-commons-codec = 1.3
 Requires:      vorbisspi = 1.0.2
-Requires:      qdwizard = 1.9
+Requires:      qdwizard = 2.1
 Requires:      jakarta-commons-logging = 1.1
 Requires:      jakarta-commons-collections = 3.2.1
 Requires:      jlayer = 1.0
+
 %description
 Jajuk is software that organizes and plays music. 
 It is a full-featured application geared towards advanced users 
