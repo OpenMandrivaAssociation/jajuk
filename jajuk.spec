@@ -45,7 +45,7 @@ perform the same task.
 %_datadir/jajuk/lib/LICENSE-CREATIVE-COMMONS.txt
 %_datadir/jajuk/lib/LICENSE-GPL.txt
 %_datadir/jajuk/lib/LICENSE-LGPL.txt
-%_datadir/jajuk/lib/JIntellitype.dll
+%exclude %_datadir/jajuk/lib/JIntellitype.dll
 %_datadir/jajuk/lib/*.jar
 %_iconsdir/jajuk-icon-shortcut_64x64.png
 
