@@ -13,7 +13,7 @@ BuildRequires: ant
 BuildRequires: jfreechart = 1.0.11
 BuildRequires: jakarta-commons-codec = 1.3
 BuildRequires: vorbisspi = 1.0.2
-BuildRequires: qdwizard = 1.9
+#BuildRequires: qdwizard = 1.9
 BuildRequires: jakarta-commons-logging = 1.1
 BuildRequires: jakarta-commons-collections = 3.2.1
 BuildRequires: jlayer = 1.0
@@ -21,7 +21,7 @@ BuildRequires: jlayer = 1.0
 Requires:      jfreechart = 1.0.11
 Requires:      jakarta-commons-codec = 1.3
 Requires:      vorbisspi = 1.0.2
-Requires:      qdwizard = 2.1
+#Requires:      qdwizard = 2.1
 Requires:      jakarta-commons-logging = 1.1
 Requires:      jakarta-commons-collections = 3.2.1
 Requires:      jlayer = 1.0
