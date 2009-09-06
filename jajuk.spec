@@ -1,6 +1,6 @@
 Name:          jajuk
 Summary:       Jajuk Advanced Jukebox
-Version:       1.7.3
+Version:       1.8.1
 Release:       %mkrel 1
 License:       GPL
 Group:	       Sound
