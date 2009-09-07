@@ -8,6 +8,7 @@ Source0:       %name-sources-%version.zip
 patch0:	       jajuk-1.7.3-fix-build.patch
 URL: 	       http://jajuk.info/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildArch:     noarch
 
 BuildRequires: ant
 BuildRequires: jfreechart = 1.0.11
@@ -45,6 +46,7 @@ perform the same task.
 %_datadir/jajuk/lib/LICENSE-CREATIVE-COMMONS.txt
 %_datadir/jajuk/lib/LICENSE-GPL.txt
 %_datadir/jajuk/lib/LICENSE-LGPL.txt
+%_datadir/jajuk/lib/*/libunix-java.so
 %exclude %_datadir/jajuk/lib/JIntellitype.dll
 %_datadir/jajuk/lib/*.jar
 %_iconsdir/jajuk-icon-shortcut_64x64.png
