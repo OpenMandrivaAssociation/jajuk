@@ -1,14 +1,14 @@
 Name:          jajuk
 Summary:       Jajuk Advanced Jukebox
 Version:       1.8.1
-Release:       %mkrel 1
+Release:       %mkrel 2
 License:       GPL
 Group:	       Sound
 Source0:       %name-sources-%version.zip
 patch0:	       jajuk-1.7.3-fix-build.patch
 URL: 	       http://jajuk.info/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildArch:     noarch
+#BuildArch:     noarch
 
 BuildRequires: ant
 BuildRequires: jfreechart = 1.0.11
