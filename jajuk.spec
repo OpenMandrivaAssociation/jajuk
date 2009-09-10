@@ -48,7 +48,9 @@ perform the same task.
 %_datadir/jajuk/lib/LICENSE-LGPL.txt
 %if "lib" == "lib64"
 %exclude %_datadir/jajuk/lib/lib32/libunix-java.so
+%_datadir/jajuk/lib/lib64/libunix-java.so
 %else
+%_datadir/jajuk/lib/lib32/libunix-java.so
 %exclude %_datadir/jajuk/lib/lib64/libunix-java.so
 %endif
 %exclude %_datadir/jajuk/lib/JIntellitype.dll
