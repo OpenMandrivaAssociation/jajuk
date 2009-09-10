@@ -1,7 +1,7 @@
 Name:          jajuk
 Summary:       Jajuk Advanced Jukebox
 Version:       1.8.1
-Release:       %mkrel 2
+Release:       %mkrel 3
 License:       GPL
 Group:	       Sound
 Source0:       %name-sources-%version.zip
@@ -46,7 +46,11 @@ perform the same task.
 %_datadir/jajuk/lib/LICENSE-CREATIVE-COMMONS.txt
 %_datadir/jajuk/lib/LICENSE-GPL.txt
 %_datadir/jajuk/lib/LICENSE-LGPL.txt
-%_datadir/jajuk/lib/*/libunix-java.so
+%if "lib" == "lib64"
+%exclude %_datadir/jajuk/lib/lib32/libunix-java.so
+%else
+%exclude %_datadir/jajuk/lib/lib64/libunix-java.so
+%endif
 %exclude %_datadir/jajuk/lib/JIntellitype.dll
 %_datadir/jajuk/lib/*.jar
 %_iconsdir/jajuk-icon-shortcut_64x64.png
