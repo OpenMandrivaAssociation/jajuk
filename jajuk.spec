@@ -13,21 +13,21 @@ BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires:	ant
 BuildRequires:	jfreechart = 1.0.11
-BuildRequires:	jakarta-commons-codec = 1.4
+BuildRequires:	jakarta-commons-codec => 1.3
 BuildRequires:	vorbisspi = 1.0.2
 #BuildRequires: qdwizard = 1.9
 BuildRequires:	jakarta-commons-logging = 1.1
 BuildRequires:	jakarta-commons-collections = 3.2.1
-BuildRequires:	jlayer = 1.0.1
+BuildRequires:	jlayer => 1.0
 BuildRequires:	crimson
 
 Requires:	jfreechart = 1.0.11
-Requires:	jakarta-commons-codec = 1.4
+Requires:	jakarta-commons-codec => 1.3
 Requires:	vorbisspi = 1.0.2
 #Requires:      qdwizard = 2.1
 Requires:	jakarta-commons-logging = 1.1
 Requires:	jakarta-commons-collections = 3.2.1
-Requires:	jlayer = 1.0.1
+Requires:	jlayer => 1.0
 Suggests:	mplayer
 %description
 Jajuk is software that organizes and plays music. 
@@ -69,7 +69,7 @@ rm -fr %buildroot
 ln -s %{_javadir}/jfreechart-1.0.11.jar lib/jfreechart-1.0.1.jar
 
 %__rm -fr lib/commons-codec-1.3.jar
-ln -s %{_javadir}/commons-codec-1.4.jar lib/commons-codec-1.3.jar
+ln -s %{_javadir}/commons-codec-1.*.jar lib/commons-codec-1.3.jar
 
 %__rm -fr lib/vorbisspi-1.0.1.jar
 ln -s %{_javadir}/vorbisspi1.0.2.jar lib/vorbisspi1.0.2.jar
@@ -84,7 +84,7 @@ ln -s %{_javadir}/commons-logging-1.1.jar lib/commons-logging-1.0.jar
 ln -s %{_javadir}/commons-collections-3.2.1.jar lib/commons-collections-3.2.jar
 
 %__rm -fr lib/jlayer-1.0.jar
-ln -s %{_javadir}/jlayer-1.0.1.jar lib/jlayer-1.0.1.jar
+ln -s %{_javadir}/jlayer-1.*.jar lib/jlayer-1.0.jar
 
 %build
 cd src/scripts
