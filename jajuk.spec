@@ -1,32 +1,34 @@
-Name:          jajuk
-Summary:       Jajuk Advanced Jukebox
-Version:       1.8.1
-Release:       %mkrel 3
-License:       GPL
+Name:		jajuk
+Summary:	Jajuk Advanced Jukebox
+Version:	1.8.4
+Release:	%mkrel 1
+License:	GPL
 Group:	       Sound
-Source0:       %name-sources-%version.zip
-patch0:	       jajuk-1.7.3-fix-build.patch
-URL: 	       http://jajuk.info/
+Source0:	http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-sources-%{version}.zip
+#Source0:       %name-sources-%version.zip
+patch0:		jajuk-1.7.3-fix-build.patch
+URL:		http://jajuk.info/
 BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 #BuildArch:     noarch
 
-BuildRequires: ant
-BuildRequires: jfreechart = 1.0.11
-BuildRequires: jakarta-commons-codec = 1.3
-BuildRequires: vorbisspi = 1.0.2
+BuildRequires:	ant
+BuildRequires:	jfreechart = 1.0.11
+BuildRequires:	jakarta-commons-codec = 1.4
+BuildRequires:	vorbisspi = 1.0.2
 #BuildRequires: qdwizard = 1.9
-BuildRequires: jakarta-commons-logging = 1.1
-BuildRequires: jakarta-commons-collections = 3.2.1
-BuildRequires: jlayer = 1.0
+BuildRequires:	jakarta-commons-logging = 1.1
+BuildRequires:	jakarta-commons-collections = 3.2.1
+BuildRequires:	jlayer = 1.0.1
+BuildRequires:	crimson
 
-Requires:      jfreechart = 1.0.11
-Requires:      jakarta-commons-codec = 1.3
-Requires:      vorbisspi = 1.0.2
+Requires:	jfreechart = 1.0.11
+Requires:	jakarta-commons-codec = 1.4
+Requires:	vorbisspi = 1.0.2
 #Requires:      qdwizard = 2.1
-Requires:      jakarta-commons-logging = 1.1
-Requires:      jakarta-commons-collections = 3.2.1
-Requires:      jlayer = 1.0
-
+Requires:	jakarta-commons-logging = 1.1
+Requires:	jakarta-commons-collections = 3.2.1
+Requires:	jlayer = 1.0.1
+Suggests:	mplayer
 %description
 Jajuk is software that organizes and plays music. 
 It is a full-featured application geared towards advanced users 
@@ -64,10 +66,10 @@ rm -fr %buildroot
 %setup -q -n %name-src-%version
 %patch0 -p1
 %__rm -fr lib/jfreechart-1.0.1.jar
-ln -s %{_javadir}/jfreechart-1.0.11.jar lib/jfreechart-1.0.11.jar
+ln -s %{_javadir}/jfreechart-1.0.11.jar lib/jfreechart-1.0.1.jar
 
 %__rm -fr lib/commons-codec-1.3.jar
-ln -s %{_javadir}/commons-codec-1.3.jar lib/commons-codec-1.3.jar
+ln -s %{_javadir}/commons-codec-1.4.jar lib/commons-codec-1.3.jar
 
 %__rm -fr lib/vorbisspi-1.0.1.jar
 ln -s %{_javadir}/vorbisspi1.0.2.jar lib/vorbisspi1.0.2.jar
@@ -76,13 +78,13 @@ ln -s %{_javadir}/vorbisspi1.0.2.jar lib/vorbisspi1.0.2.jar
 #ln -s %{_javadir}/qdwizard-1.9.jar lib/qdwizard-1.9.jar
 
 %__rm -fr lib/commons-logging-1.0.jar
-ln -s %{_javadir}/commons-logging-1.1.jar lib/commons-logging-1.1.jar
+ln -s %{_javadir}/commons-logging-1.1.jar lib/commons-logging-1.0.jar
 
 %__rm -fr lib/commons-collections-3.2.jar
-ln -s %{_javadir}/commons-collections-3.2.1.jar lib/commons-collections-3.2.1.jar
+ln -s %{_javadir}/commons-collections-3.2.1.jar lib/commons-collections-3.2.jar
 
 %__rm -fr lib/jlayer-1.0.jar
-ln -s %{_javadir}/jlayer-1.0.jar lib/jlayer-1.0.jar
+ln -s %{_javadir}/jlayer-1.0.1.jar lib/jlayer-1.0.1.jar
 
 %build
 cd src/scripts
@@ -95,7 +97,7 @@ install -pm 644 build/jajuk/bin/jajuk.jar $RPM_BUILD_ROOT%_datadir/jajuk/bin/jaj
 install -dm 755 %buildroot%_datadir/jajuk/lib
 mv -f build/jajuk/lib/* $RPM_BUILD_ROOT%_datadir/jajuk/lib/
 install -dm 755 %buildroot%_bindir
-install -pm 644 build/jajuk/jajuk $RPM_BUILD_ROOT%_bindir
+install -pm 755 build/jajuk/jajuk $RPM_BUILD_ROOT%_bindir
 
 install -dm 755 %buildroot%_iconsdir
 install -pm 644 build/jajuk/jajuk-icon-shortcut_64x64.png $RPM_BUILD_ROOT%_iconsdir
