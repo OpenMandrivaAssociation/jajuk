@@ -1,7 +1,7 @@
 Name:		jajuk
 Summary:	Jajuk Advanced Jukebox
 Version:	1.8.4
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Group:	       Sound
 Source0:	http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-sources-%{version}.zip
