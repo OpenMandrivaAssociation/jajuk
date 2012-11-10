@@ -1,0 +1,11 @@
+--- jajuk-src-1.7.3/src/scripts/build.xml~	2009-05-11 21:21:08.000000000 +0200
++++ jajuk-src-1.7.3/src/scripts/build.xml	2009-05-12 11:30:52.000000000 +0200
+@@ -41,7 +41,7 @@
+ 	<!-- ============================== -->
+ 
+ 	<!--CONST-->
+-	<property name='rootdir' value='/tmp/jajuk-dist' />
++    <property name='rootdir' value='./build' />
+ 	<property name='installdir' value='/usr/share/jajuk/' />
+ 	<property name='jnidir' value='/usr/lib/jajuk/' />
+ 	<property name='distdir' value='${rootdir}/jajuk' />
