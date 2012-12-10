@@ -1,33 +1,34 @@
+%define debug_package %{nil}
+
 Name:		jajuk
 Summary:	Jajuk Advanced Jukebox
 Version:	1.8.4
-Release:	%mkrel 2
+Release:	2
 License:	GPL
 Group:	       Sound
 Source0:	http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-sources-%{version}.zip
 #Source0:       %name-sources-%version.zip
 patch0:		jajuk-1.7.3-fix-build.patch
 URL:		http://jajuk.info/
-BuildRoot:     %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 #BuildArch:     noarch
 
 BuildRequires:	ant
-BuildRequires:	jfreechart = 1.0.11
-BuildRequires:	jakarta-commons-codec => 1.3
+BuildRequires:	jfreechart
+BuildRequires:	jakarta-commons-codec = 1.4
 BuildRequires:	vorbisspi = 1.0.2
 #BuildRequires: qdwizard = 1.9
 BuildRequires:	jakarta-commons-logging = 1.1
 BuildRequires:	jakarta-commons-collections = 3.2.1
-BuildRequires:	jlayer => 1.0
+BuildRequires:	jlayer = 1.0.1
 BuildRequires:	crimson
 
-Requires:	jfreechart = 1.0.11
-Requires:	jakarta-commons-codec => 1.3
+Requires:	jfreechart
+Requires:	jakarta-commons-codec = 1.4
 Requires:	vorbisspi = 1.0.2
 #Requires:      qdwizard = 2.1
 Requires:	jakarta-commons-logging = 1.1
 Requires:	jakarta-commons-collections = 3.2.1
-Requires:	jlayer => 1.0
+Requires:	jlayer = 1.0.1
 Suggests:	mplayer
 %description
 Jajuk is software that organizes and plays music. 
@@ -49,13 +50,10 @@ perform the same task.
 %_datadir/jajuk/lib/LICENSE-GPL.txt
 %_datadir/jajuk/lib/LICENSE-LGPL.txt
 %if "lib" == "lib64"
-%exclude %_datadir/jajuk/lib/lib32/libunix-java.so
 %_datadir/jajuk/lib/lib64/libunix-java.so
 %else
 %_datadir/jajuk/lib/lib32/libunix-java.so
-%exclude %_datadir/jajuk/lib/lib64/libunix-java.so
 %endif
-%exclude %_datadir/jajuk/lib/JIntellitype.dll
 %_datadir/jajuk/lib/*.jar
 %_iconsdir/jajuk-icon-shortcut_64x64.png
 
@@ -66,10 +64,10 @@ rm -fr %buildroot
 %setup -q -n %name-src-%version
 %patch0 -p1
 %__rm -fr lib/jfreechart-1.0.1.jar
-ln -s %{_javadir}/jfreechart-1.0.11.jar lib/jfreechart-1.0.1.jar
+ln -s %{_javadir}/jfreechart-1.0.13.jar lib/jfreechart-1.0.1.jar
 
 %__rm -fr lib/commons-codec-1.3.jar
-ln -s %{_javadir}/commons-codec-1.*.jar lib/commons-codec-1.3.jar
+ln -s %{_javadir}/commons-codec-1.4.jar lib/commons-codec-1.3.jar
 
 %__rm -fr lib/vorbisspi-1.0.1.jar
 ln -s %{_javadir}/vorbisspi1.0.2.jar lib/vorbisspi1.0.2.jar
@@ -84,7 +82,7 @@ ln -s %{_javadir}/commons-logging-1.1.jar lib/commons-logging-1.0.jar
 ln -s %{_javadir}/commons-collections-3.2.1.jar lib/commons-collections-3.2.jar
 
 %__rm -fr lib/jlayer-1.0.jar
-ln -s %{_javadir}/jlayer-1.*.jar lib/jlayer-1.0.jar
+ln -s %{_javadir}/jlayer-1.0.1.jar lib/jlayer-1.0.1.jar
 
 %build
 cd src/scripts
@@ -114,5 +112,43 @@ Type=Application
 Categories=AudioVideo;Audio;
 EOF
 
-%clean
-rm -fr %buildroot
+rm -f %{buildroot}%{_datadir}/jajuk/lib/JIntellitype.dll
+%if "lib" == "lib64"
+rm -f %{buildroot}%{_datadir}/jajuk/lib/lib32/libunix-java.so
+%else
+rm -f %{buildroot}%{_datadir}/jajuk/lib/lib64/libunix-java.so
+%endif
+
+%changelog
+* Thu Mar 04 2010 John Balcaen <mikala@mandriva.org> 1.8.4-1mdv2010.1
++ Revision: 514162
+- Update to 1.8.4
+- add a suggests to mplayer
+- update buildrequires and requires
+- fix permissions on /usr/bin/jajuk
+
+* Thu Sep 10 2009 Nicolas Lécureuil <nlecureuil@mandriva.com> 1.8.1-3mdv2010.0
++ Revision: 437382
+- Fix file list
+- Fix file list
+
+* Tue Sep 08 2009 Nicolas Lécureuil <nlecureuil@mandriva.com> 1.8.1-2mdv2010.0
++ Revision: 434143
+- Seems this cannot be noarched
+
+* Mon Sep 07 2009 Nicolas Lécureuil <nlecureuil@mandriva.com> 1.8.1-1mdv2010.0
++ Revision: 432856
+- Fix file list
+- Update to version 1.8.1
+- Do not requires them for the moment
+- Do not package dll files
+- Fix required qdwizard version
+- Use more mandriva jars
+- Start to use our own jar files
+- Start to update to jajuk 1.7.3
+- Go and use 1.5 dev branch, it works better with free java
+- use more of our own jar files
+- Start to use our own jar files
+- import jajuk
+
+
