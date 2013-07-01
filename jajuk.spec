@@ -1,7 +1,7 @@
 %define debug_package %{nil}
 
 Name:		jajuk
-Summary:	Jajuk Advanced Jukebox
+Summary:	Advanced Jukebox
 Version:	1.8.4
 Release:	2
 License:	GPL
