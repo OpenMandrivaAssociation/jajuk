@@ -3,7 +3,7 @@
 Name:		jajuk
 Summary:	Advanced Jukebox
 Version:	1.8.4
-Release:	2
+Release:	3
 License:	GPL
 Group:	       Sound
 Source0:	http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-sources-%{version}.zip
@@ -38,7 +38,6 @@ the software is designed to be intuitive and provide different ways to
 perform the same task. 
 
 %files 
-%defattr(-,root,root)
 %_bindir/jajuk
 %{_datadir}/applications/mandriva-%{name}.desktop
 %_datadir/jajuk/bin/jajuk.jar
@@ -90,15 +89,15 @@ ant
 
 %install
 install -dm 755 %buildroot%_datadir/jajuk/bin
-install -pm 644 build/jajuk/bin/jajuk.jar $RPM_BUILD_ROOT%_datadir/jajuk/bin/jajuk.jar
+install -pm 644 build/jajuk/bin/jajuk.jar %{buildroot}%_datadir/jajuk/bin/jajuk.jar
 %__rm -fr build/jajuk/lib/windows
 install -dm 755 %buildroot%_datadir/jajuk/lib
-mv -f build/jajuk/lib/* $RPM_BUILD_ROOT%_datadir/jajuk/lib/
+mv -f build/jajuk/lib/* %{buildroot}%_datadir/jajuk/lib/
 install -dm 755 %buildroot%_bindir
-install -pm 755 build/jajuk/jajuk $RPM_BUILD_ROOT%_bindir
+install -pm 755 build/jajuk/jajuk %{buildroot}%_bindir
 
 install -dm 755 %buildroot%_iconsdir
-install -pm 644 build/jajuk/jajuk-icon-shortcut_64x64.png $RPM_BUILD_ROOT%_iconsdir
+install -pm 644 build/jajuk/jajuk-icon-shortcut_64x64.png %{buildroot}%_iconsdir
 
 mkdir -p %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
