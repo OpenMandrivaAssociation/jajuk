@@ -9,7 +9,7 @@ Group:	       Sound
 Source0:	http://downloads.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-sources-%{version}.zip
 #Source0:       %name-sources-%version.zip
 patch0:		jajuk-1.7.3-fix-build.patch
-URL:		http://jajuk.info/
+URL:		https://jajuk.info/
 #BuildArch:     noarch
 
 BuildRequires:	ant
